@@ -20,7 +20,7 @@ export default function Home({ posts }) {
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
+        <div className="mb-4 space-y-2 pt-6 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-cyan-900 dark:text-blue-300 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Latest
           </h1>
@@ -28,12 +28,15 @@ export default function Home({ posts }) {
             {siteMetadata.header}
           </p>
         </div>
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="pt-4">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
             const { slug, date, title, summary, tags } = frontMatter
             return (
-              <li key={slug} className="py-12">
+              <div
+                key={slug}
+                className="bg-tale-300 mx-auto mb-4 block max-w-3xl rounded-lg border border-gray-200 p-6 py-12 shadow-md hover:bg-cyan-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+              >
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
@@ -75,10 +78,10 @@ export default function Home({ posts }) {
                     </div>
                   </div>
                 </article>
-              </li>
+              </div>
             )
           })}
-        </ul>
+        </div>
       </div>
       {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
