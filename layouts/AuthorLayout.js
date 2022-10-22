@@ -8,9 +8,9 @@ export default function AuthorLayout({ children, frontMatter }) {
   return (
     <>
       <PageSEO title={`About - ${name}`} description={`About me - ${name}`} />
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
+      <div className="divide-y divide-blue-200 dark:divide-cyan-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-indigo-900 dark:text-yellow-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             About
           </h1>
         </div>
@@ -23,11 +23,13 @@ export default function AuthorLayout({ children, frontMatter }) {
               height="192px"
               className="h-48 w-48 rounded-full"
             />
-            <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
-            <div className="text-gray-500 dark:text-gray-400">{occupation}</div>
-            <div className="text-gray-500 dark:text-gray-400">{company}</div>
+            <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight text-cyan-500 dark:text-indigo-400">
+              {name}
+            </h3>
+            <div className="text-cyan-500 dark:text-indigo-400">{occupation}</div>
+            <div className="text-cyan-500 dark:text-indigo-400">{company}</div>
             <div className="flex space-x-3 pt-6">
-              <SocialIcon kind="mail" href={`mailto:${email}`} />
+              {/* <SocialIcon kind="mail" href={`mailto:${email}`} /> */}
               <SocialIcon kind="github" href={github} />
               <SocialIcon kind="linkedin" href={linkedin} />
               <SocialIcon kind="twitter" href={twitter} />
