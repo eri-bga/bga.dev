@@ -1,5 +1,5 @@
 {
-  "name": "tailwind-nextjs-starter-blog",
+  "name": "b-blog",
   "version": "1.5.6",
   "private": true,
   "scripts": {
@@ -17,6 +17,7 @@
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
     "autoprefixer": "^10.4.12",
+    "classnames": "^2.3.2",
     "esbuild": "^0.13.13",
     "github-slugger": "^1.3.0",
     "gray-matter": "^4.0.2",
@@ -39,6 +40,7 @@
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
     "sharp": "^0.28.3",
+    "swr": "^1.3.0",
     "tailwindcss": "^3.0.23",
     "unist-util-visit": "^4.0.0"
   },

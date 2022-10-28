@@ -21,9 +21,9 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          <h5 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-4xl md:leading-14">
             {title}
-          </h1>
+          </h5>
           <div className="relative mx-auto max-w-lg rounded-full bg-gradient-to-r from-slate-100 via-sky-400 to-indigo-400 p-1">
             <input
               aria-label="Search articles"
@@ -52,35 +52,34 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
         {displayPosts.map((frontMatter) => {
           const { slug, date, title, summary, tags } = frontMatter
           return (
-            <div
-              key={slug}
-              className="mb-4 block max-w-3xl border-spacing-6 rounded-lg border bg-gradient-to-r
-                  from-indigo-100 
-                  via-purple-400 to-pink-400 p-1 text-center dark:border-gray-700"
-            >
-              <div className="mx-auto bg-gray-300 hover:bg-cyan-100 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                  <div className="space-y-3 xl:col-span-3">
-                    <div>
-                      <h3 className="text-2xl font-bold leading-8 tracking-tight">
-                        <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
-                          {title}
-                        </Link>
-                      </h3>
-                      <dl>
-                        <dt className="sr-only">Published on</dt>
-                        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                          <time dateTime={date}>{formatDate(date)}</time>
-                        </dd>
-                      </dl>
-                      <div className="flex flex-wrap justify-center">
-                        {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
-                        ))}
+            <div key={slug} className="mb-4 p-1 text-left">
+              <article>
+                <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
+                  <div className="space-y-5 xl:col-span-3">
+                    <div className="space-y-6">
+                      <div>
+                        <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                          <Link href={`/blog/${slug}`} className="text-cyan-900 dark:text-blue-300">
+                            {title}
+                          </Link>
+                        </h2>
+                        <dl>
+                          <dt className="sr-only">Published on</dt>
+                          <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                            <time dateTime={date}>{formatDate(date)}</time>
+                          </dd>
+                        </dl>
+                        <div className="flex flex-wrap text-left">
+                          {tags.map((tag) => (
+                            <div className="mt-2" key={tag.id}>
+                              <Tag key={tag} text={tag} />
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                    <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                      {summary}
+                      <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                        {summary}
+                      </div>
                     </div>
                     <div className="inline-flex items-center rounded-lg bg-blue-700 py-2 px-3 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                       <Link
@@ -92,8 +91,8 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                       </Link>
                     </div>
                   </div>
-                </article>
-              </div>
+                </div>
+              </article>
             </div>
           )
         })}

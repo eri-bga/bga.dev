@@ -16,17 +16,17 @@ export default function Tags({ tags }) {
   return (
     <>
       <PageSEO title={`Tags - ${siteMetadata.author}`} description="Things I blog about" />
-      <div className="md:mt-18 divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-x-2 pt-1 pb-5 md:space-y-5">
+      <div className="divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="mx-auto space-x-2 pt-1 pb-5 md:space-y-5">
           <h1 className="font-exrabold text-3xl tracking-tight text-cyan-900 dark:text-violet-400 sm:text-4xl md:px-4 md:text-6xl">
             Tags
           </h1>
         </div>
-        <div className="max-w-lg">
+        <div className="max-w-sm justify-around">
           {Object.keys(tags).length === 0 && 'No tags found.'}
           {sortedTags.map((t) => {
             return (
-              <div key={t} className="mt-2 mb-2 mr-5">
+              <div key={t} className="pt-3">
                 <Tag text={t} />
                 <Link
                   href={`/tags/${kebabCase(t)}`}
