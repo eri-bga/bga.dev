@@ -21,7 +21,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h5 className="text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-4xl md:leading-14">
+          <h5 className="mb-6 bg-gradient-to-r from-purple-800 via-sky-50 to-pink-900 bg-clip-text text-3xl font-extrabold text-transparent">
             {title}
           </h5>
           <div className="relative mx-auto max-w-lg rounded-full bg-gradient-to-r from-slate-100 via-sky-400 to-indigo-400 p-1">
@@ -58,7 +58,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                   <div className="space-y-5 xl:col-span-3">
                     <div className="space-y-6">
                       <div>
-                        <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                        <h2 className="bg-gradient-to-r from-purple-800 via-sky-50 to-pink-900 bg-clip-text text-2xl font-bold leading-8 tracking-tight">
                           <Link href={`/blog/${slug}`} className="text-cyan-900 dark:text-blue-300">
                             {title}
                           </Link>

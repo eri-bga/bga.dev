@@ -1,6 +1,6 @@
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
+import Logo from '@/data/logo-dev.svg'
 import Link from './Link'
 import SectionContainer from './SectionContainer'
 import Footer from './Footer'
@@ -11,11 +11,11 @@ const LayoutWrapper = ({ children }) => {
   return (
     <SectionContainer>
       <div className="flex h-screen flex-col justify-between">
-        <header className="sticky top-0 z-10 flex items-center justify-between py-10">
+        <header className="top-0 z-10 flex items-center justify-between py-10">
           <div>
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
-                <div className="mr-3">
+                <div className="mr-3 rounded-md border bg-gradient-to-r from-rose-500 via-orange-300 to-violet-400">
                   <Logo />
                 </div>
                 {typeof siteMetadata.headerTitle === 'string' ? (

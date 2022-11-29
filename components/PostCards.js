@@ -22,11 +22,11 @@ export default function BlogPostCard({ title, slug, gradient, summary, tags, dat
         <div className="flex h-full flex-col justify-between rounded-lg bg-white p-4 dark:bg-gray-900">
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-bold leading-8 tracking-tight">
-                <Link href={`/blog/${slug}`} className="text-cyan-900 dark:text-blue-300">
+              <div className="flex flex-col justify-between md:flex-row">
+                <h4 className="mb-6 w-full text-lg font-medium tracking-tight text-gray-900 dark:text-gray-100 sm:mb-10 md:text-lg">
                   {title}
-                </Link>
-              </h2>
+                </h4>
+              </div>
               <dl>
                 <dt className="sr-only">Published on</dt>
                 <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
@@ -34,7 +34,7 @@ export default function BlogPostCard({ title, slug, gradient, summary, tags, dat
                 </dd>
               </dl>
               <div className="flex flex-wrap justify-center">
-                {tags.map((tag) => (
+                {tags?.map((tag) => (
                   <div className="mt-2" key={tag.id}>
                     <Tag key={tag} text={tag} />
                   </div>
@@ -42,7 +42,7 @@ export default function BlogPostCard({ title, slug, gradient, summary, tags, dat
               </div>
             </div>
             <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-              {summary.slice(0, 100)}
+              {summary?.slice(0, 100)}
             </div>
           </div>
           <div className="capsize flex items-center text-gray-800 dark:text-gray-200">

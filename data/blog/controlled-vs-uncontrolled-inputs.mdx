@@ -1,0 +1,99 @@
+---
+title: Controlled vs Uncontrolled inputs
+date: '2021-12-21'
+tags: ['react js', 'forms', 'inputs', 'Controlled', 'Uncontrolled']
+draft: false
+summary: 'Uncontrolled inputs are handled by DOM itself and accessed by React Ref where as controlled inputs are handled by React component.'
+---
+
+I know there are a lot of articles regarding react forms. But, it doesn't hurt if I say something again in a very short explanation about react form input types.
+We all know that there two kinds of form inputs in react namely: controlled and uncontrolled inputs.
+
+## Controlled inputs
+
+Controlled inputs accept their current value as a prop and a callback to change that value. That implies that the value of the input has to live in the React state somewhere. Typically, the component that renders the input (like a form component) saves that in its state:
+
+```
+const Form = () => {
+ const [value, setValue] = useState("");
+
+ const handleChange = (e) => {
+   setValue(e.target.value)
+ }
+
+ return (
+   <form>
+     <input
+       value={value}
+       onChange={handleChange}
+       type="text"
+     />
+   </form>
+ );
+};
+```
+
+Every time you type a new character, the handleChange function is executed. It receives the new value of the input, and then it sets it in the state. So, the Form component always has the input's current value without needing to ask for it explicitly.
+
+As a result, your data (React state) and UI (input tags) are always in sync. Another implication is that forms can respond to input changes immediately, for example, by:
+
+- Instant validation per field
+- Disabling the submit button unless all fields have valid data
+- Enforcing a specific input format, like phone or credit card numbers
+
+Sometimes you will find yourself not needing any of that. In that case uncontrolled could be a more straightforward choice.
+
+## Uncontrolled inputs
+
+Unlike the controlled inputs where data is handled by the react component, in uncontrolled component, data is handled by the DOM itself.
+So, if we don't have controlled over its state, how do we access its value?
+To access the value of an uncontrolled input, we use the React Ref hook. For example, in the code below we use, the Ref hook to access the current value of the input
+
+```
+const Form = () => {
+ const inputRef = useRef(null);
+
+ const handleSubmit = () => {
+   const inputValue = inputRef.current.value;
+   // Do something with the value
+ }
+ return (
+   <form onSubmit={handleSubmit}>
+     <input ref={inputRef} type="text" />
+   </form>
+ );
+};
+```
+
+Let me wrap up my little article, by mentioning that there are some specific form inputs that are always uncontrolled, like the file input tag.
+
+In React, an <input type="file" /> is always an uncontrolled component because its value is read-only and can't be set programmatically.
+
+```
+const Form = () => {
+ const fileInput = useRef(null);
+
+ const handleSubmit = (e) => {
+   e.preventDefault();
+   const files = fileInput.current.files;
+   // Do something with the files here
+ }
+
+ return (
+   <form onSubmit={handleSubmit}>
+     <input
+       ref={fileInput}
+       type="file"
+     />
+   </form>
+ );
+};
+```
+
+React recommends using controlled inputs over uncontrolled inputs, but let me summarise in the table below.
+
+![controlled vs uncontrolled inputs](/static/images/forms.png)
+
+References:
+[React docs](https://reactjs.org/docs/forms.html)
+[React forms by Gosha](https://goshacmd.com/controlled-vs-uncontrolled-inputs-react/)

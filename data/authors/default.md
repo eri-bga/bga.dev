@@ -9,4 +9,4 @@ linkedin: https://www.linkedin.com
 github: https://github.com
 ---
 
-Brhane Ashebr is a computer engineering graduate who currently works as a research developer. His research interests includes solving complex problems in the cyber security industry and web technology.
+Brhane Ashebr is a fullstack developer in Reactjs, sveltejs, PHP, Python.

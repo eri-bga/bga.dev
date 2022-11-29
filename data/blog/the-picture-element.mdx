@@ -1,0 +1,73 @@
+---
+title: 'How to use the picture element to responsive images'
+date: '2020-01-12'
+lastmod: '2021-02-01'
+tags: ['responsive', 'images', 'guide']
+draft: false
+summary: 'This is just a simple example how on how to achieve a responsive image using the picture element.'
+---
+
+# The Picture element
+
+The `<picture>` HTML element contains zero or more `<source>` elements and one `<img>` element to offer alternative versions of an image for different display/device scenarios.
+
+## Examples
+
+The browser will consider each child `<source>` element and choose the best match among them.
+If no matches are found—or the browser doesn't support the `<picture>` element—the URL of the `<img>` element's src attribute is selected.
+The selected image is then presented in the space occupied by the `<img>` element.
+
+The browser will consider each child `<source>` element and choose the best match among them. If no matches are found—or the browser doesn't support the `<picture>` element—the URL of the `<img>` element's src attribute is selected.
+The selected image is then presented in the space occupied by the `<img>` element.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<div style="width: 80%; height:full; margin:auto; padding-left: 4rem; padding-right: 4rem;">
+
+        <h2>The picture Element</h2>
+        <div style="justify-content: space-around; margin: auto" >
+            <div style="display:flexbox">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="/static/images/huskies/326px-DOG-HUSKY_23JUL00.jpg">
+                    <img src="/static/images/huskies/Huskiesatrest.jpg" style="width:auto;" alt="no image"/>
+                </picture>
+            </div>
+            <div style="background-color: rgb(92, 88, 103)" >
+                <p>Resize the browser to see different versions of the picture loading at different viewport sizes.
+                    The browser looks for the first source element where the media query matches the user's current viewport width,
+                    and fetches the image specified in the srcset attribute.</p>
+
+                    <p>The img element is required as the last child tag of the picture declaration block.
+                    The img element is used to provide backward compatibility for browsers that do not support the picture element, or if none of the source tags matched.
+                    </p>
+
+                    <p><strong>Note:</strong> The picture element is not supported in IE12 and earlier or Safari 9.0 and earlier.</p>
+            </div>
+        </div>
+</div>
+
+
+</body>
+</html>
+
+```
+
+## The media attribute
+
+The media attribute specifies a media condition (similar to a media query) that the user agent will evaluate for each `<source>` element.
+If the `<source>`'s media condition evaluates to false, the browser skips it and evaluates the next element inside `<picture>`.
+
+```
+<picture>
+  <source srcset="/static/images/huskies/Huskiesatrest640.jpeg" media="(min-width: 600px)" />
+  <img src="/static/images/huskies/Huskiesatrest640.jpeg" alt="MDN" />
+</picture>
+```
